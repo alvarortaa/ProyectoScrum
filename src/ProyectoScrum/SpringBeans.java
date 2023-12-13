@@ -1,6 +1,7 @@
-package ProyectoScrum.core.Application;
+package ProyectoScrum;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import ProyectoScrum.core.DrivenPorts.TareaRepository;
@@ -8,9 +9,11 @@ import ProyectoScrum.core.DriverPorts.TareaService;
 import ProyectoScrum.core.DriverPorts.TareaServiceImpl;
 
 @Configuration
+@ComponentScan(basePackages = "ProyectoScrum")
 public class SpringBeans {
-        @Bean
-       TareaService tareaService(final TareaRepository tareaRepository) {
-            return new TareaServiceImpl(tareaRepository);
-}
+    
+    @Bean
+    public TareaService tareaService(TareaRepository tareaRepository) {
+        return new TareaServiceImpl(tareaRepository);
+    }
 }

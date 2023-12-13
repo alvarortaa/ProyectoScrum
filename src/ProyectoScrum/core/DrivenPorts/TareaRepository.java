@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import ProyectoScrum.core.domain.Tarea;
 
-
+@Repository
 public interface TareaRepository {
 	void agregarTarea(Tarea tarea);
     void eliminarTarea(int id);

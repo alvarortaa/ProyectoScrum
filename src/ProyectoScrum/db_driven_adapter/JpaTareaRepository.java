@@ -14,11 +14,10 @@ import org.springframework.stereotype.Component;
 import ProyectoScrum.core.DrivenPorts.TareaRepository;
 import ProyectoScrum.core.domain.Tarea;
 import ProyectoScrum.core.domain.TareaDoesNotExistException;
+import ProyectoScrum.db_driven_adapter.jparepository.HAAJpaRepository;
 import ProyectoScrum.db_driven_adapter.jparepository.TareaJpaRepository;
 import ProyectoScrum.db_driven_adapter.domain.TareaEntity;
-import miproyecto.core.domain.BookDoesNotExistException;
-import miproyecto.db_driven_adapter.domain.BookEntity;
-import miproyecto.db_driven_adapter.jparepository.HAAJpaRepository;
+
 
 @Component
 public class JpaTareaRepository implements TareaRepository {
