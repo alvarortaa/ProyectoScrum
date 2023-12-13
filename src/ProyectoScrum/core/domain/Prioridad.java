@@ -16,4 +16,12 @@ public enum Prioridad {
     public int getValor() {
         return valor;
     }
+    public static Prioridad fromValor(Prioridad prioridad2) {
+        for (Prioridad prioridad : values()) {
+            if (prioridad == prioridad2) {
+                return prioridad;
+            }
+        }
+        throw new IllegalArgumentException("Valor de prioridad no válido: " + prioridad2);
+    }
 }
