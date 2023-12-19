@@ -42,13 +42,67 @@ public class TareaEntity {
         this.estado = tarea.getEstado();
     }
 
-    // Otros constructores, getters y setters si es necesario
+ // Getters y Setters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Prioridad getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(Prioridad prioridad) {
+        this.prioridad = prioridad;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public boolean isPresencial() {
+        return presencial;
+    }
+
+    public void setPresencial(boolean presencial) {
+        this.presencial = presencial;
+    }
 
     // Método para convertir la entidad a una instancia de Tarea
     public Tarea toTarea() {
         return new Tarea(this.descripcion, this.id, this.prioridad, this.duracion, this.presencial);
     }
+
     public TareaEntity withNewValues(Tarea nuevaTarea) {
-        return new TareaEntity(nuevaTarea);
+        this.descripcion = nuevaTarea.getDescripcion();
+        this.prioridad = nuevaTarea.getPrioridad();
+        this.duracion = nuevaTarea.getDuracion();
+        this.presencial = nuevaTarea.isPresencial();
+        this.estado = nuevaTarea.getEstado();
+        return this;
     }
 }

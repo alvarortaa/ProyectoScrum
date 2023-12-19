@@ -1,3 +1,4 @@
+
 package ProyectoScrum;
 
 
@@ -10,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @ComponentScan(basePackages = "ProyectoScrum")
 @EntityScan(basePackages = "ProyectoScrum.db_driven_adapter.domain")
-@EnableJpaRepositories(basePackages = "ProyectoScrum.core.DrivenPorts")
+@EnableJpaRepositories(basePackages = "ProyectoScrum.db_driven_adapter.jparepository")
 public class ProyectoScrumInicio {
 	
 	public static void main(String[] args) {

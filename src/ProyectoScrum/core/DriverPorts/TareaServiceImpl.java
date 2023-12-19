@@ -1,7 +1,10 @@
 package ProyectoScrum.core.DriverPorts;
 
 
+import java.util.List;
+
 import ProyectoScrum.core.DrivenPorts.TareaRepository;
+import ProyectoScrum.core.domain.Estado;
 import ProyectoScrum.core.domain.Tarea;
 
 
@@ -30,5 +33,27 @@ public class TareaServiceImpl implements TareaService {
 	public Tarea getTarea(int  id) {
         return repositorioTareas.findById(id);
 }
+
+	@Override
+	public List<Tarea> verListaTareas() {
+		  return repositorioTareas.obtenerTodasTareas();
+    }
+
+	@Override
+	public void planificarProximaSemana(int horas) {
+		repositorioTareas.planificarProximaSemana(horas);
+		
+	}
+
+	@Override
+	public Tarea editarEstado(int tareaId, Estado nuevoEstado) {
+		Tarea tarea = repositorioTareas.findById(tareaId);
+        if (tarea != null) {
+            tarea.setEstado(nuevoEstado);
+            repositorioTareas.editarTarea(tareaId, tarea);
+            
+        }
+		return tarea;
+	}
 }
 

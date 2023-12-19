@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Tarea</title>
+</head>
+<body>
+    <h2>Editar Tarea</h2>
+    <form th:action="@{/tareas/editar/{tareaId}(tareaId=${tarea.id})}" th:object="${tarea}" method="post">
+        <label>Nombre: <input type="text" th:field="*{nombre}" required/></label><br/>
+        <label>Descripción: <input type="text" th:field="*{descripcion}" required/></label><br/>
+        <label>Prioridad:
+            <select th:field="*{prioridad}">
+                <option th:each="p : ${T(PaqueteDeTuClasePrioridad).values()}" th:value="${p}" th:text="${p}"></option>
+            </select>
+        </label><br/>
+        <label>Duración: <input type="number" th:field="*{duracion}" required/></label><br/>
+        <label>Presencial: <input type="checkbox" th:field="*{presencial}"/></label><br/>
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>

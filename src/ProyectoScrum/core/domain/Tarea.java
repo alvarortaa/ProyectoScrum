@@ -22,6 +22,9 @@ public class Tarea {
 		
 	}
 
+	public Tarea() {
+			}
+
 	public String getDescripcion() {
 		return descripcion;
 	}

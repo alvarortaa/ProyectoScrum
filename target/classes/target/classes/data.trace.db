@@ -6,3 +6,11 @@ INSERT INTO Book_entity VALUES (1,'Don Quijote de la Mancha') [42102-199]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "BOOK_ENTITY" no encontrada
 Table "BOOK_ENTITY" not found; SQL statement:
 INSERT INTO Book_entity VALUES (1,'Don Quijote de la Mancha') [42102-199]
+2023-12-13 20:09:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "TAREAENTITY" no encontrada
+Table "TAREAENTITY" not found; SQL statement:
+INSERT INTO TareaEntity VALUES (1, 'Hacer la presentación', 'ALTA', 120, 'EN_PROGRESO', true) [42102-199]
+2023-12-13 20:17:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "TAREAENTITY" no encontrada
+Table "TAREAENTITY" not found; SQL statement:
+INSERT INTO TareaEntity VALUES (1, 'Hacer la presentación', 'ALTA', 120, 'EN_PROGRESO', true) [42102-199]

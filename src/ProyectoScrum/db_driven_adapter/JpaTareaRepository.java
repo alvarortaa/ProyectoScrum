@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import ProyectoScrum.core.DrivenPorts.TareaRepository;
+import ProyectoScrum.core.domain.Estado;
 import ProyectoScrum.core.domain.Tarea;
 import ProyectoScrum.core.domain.TareaDoesNotExistException;
 import ProyectoScrum.db_driven_adapter.jparepository.HAAJpaRepository;
@@ -38,13 +39,13 @@ public class JpaTareaRepository implements TareaRepository {
 	}
 
 	public void editarTarea(int id, Tarea nuevaTarea) {
-		// Buscar la tarea existente en la base de datos por su ID
+		
 		TareaEntity tareaExistente = tareaJpaRepository.findById((long) id)
 				.orElseThrow(() -> new IllegalArgumentException("No se encontró la tarea con ID: " + id));
 
 		TareaEntity tareaActualizada = tareaExistente.withNewValues(nuevaTarea);
 
-		// Guardar la tarea actualizada en la base de datos
+		
 		tareaJpaRepository.save(tareaActualizada);
 	}
 
@@ -56,7 +57,7 @@ public class JpaTareaRepository implements TareaRepository {
 
 	@Override
 	public List<Tarea> obtenerTareasPendientes() {
-		List<TareaEntity> tareaEntities = tareaJpaRepository.findByRealizadaFalse();
+		List<TareaEntity> tareaEntities = tareaJpaRepository.findAll()	;
 		return tareaEntities.stream().map(TareaEntity::toTarea).collect(Collectors.toList());
 	}
 
@@ -74,5 +75,29 @@ public class JpaTareaRepository implements TareaRepository {
 	    return tareaentity.toTarea();
 			
 	}
-	
+
+	@Override
+	public void planificarProximaSemana(int horasDisponibles) {
+	    
+	    List<TareaEntity> tareasPendientes = tareaJpaRepository.findByEstadoOrderByPrioridadDesc(Estado.en_espera);
+
+	    for (TareaEntity tareaEntity : tareasPendientes) {
+	        if (horasDisponibles <= 0) {
+	            break;  
+	        }
+
+	        
+	        int horasDedicadas = tareaEntity.isPresencial() ? 2 : 1;
+
+	        
+	        if (horasDedicadas <= horasDisponibles) {
+	           
+	            tareaEntity.setEstado(Estado.en_proceso);;
+	            horasDisponibles -= horasDedicadas;
+
+	            
+	            tareaJpaRepository.save(tareaEntity);
+	        }
+	    }
+	}
 }

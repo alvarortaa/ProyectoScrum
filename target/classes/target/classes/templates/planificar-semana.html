@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Planificar Semana</title>
+</head>
+<body>
+    <h2>Planificar Semana</h2>
+    <form th:action="@{/tareas/planificar}" method="post">
+        <label>Horas Disponibles: <input type="number" name="horasDisponibles" required/></label><br/>
+        <button type="submit">Planificar</button>
+    </form>
+</body>
+</html>

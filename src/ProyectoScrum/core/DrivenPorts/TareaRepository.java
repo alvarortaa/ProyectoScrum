@@ -12,6 +12,7 @@ public interface TareaRepository {
 	void agregarTarea(Tarea tarea);
     void eliminarTarea(int id);
     void editarTarea(int id, Tarea t);
+    void planificarProximaSemana(int horas);
     List<Tarea> obtenerTodasTareas();
     List<Tarea> obtenerTareasPendientes();
     List<Tarea> obtenerTareasPorPrioridad(int prioridad);

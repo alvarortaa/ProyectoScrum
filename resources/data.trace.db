@@ -14,3 +14,7 @@ INSERT INTO TareaEntity VALUES (1, 'Hacer la presentación', 'ALTA', 120, 'EN_PR
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "TAREAENTITY" no encontrada
 Table "TAREAENTITY" not found; SQL statement:
 INSERT INTO TareaEntity VALUES (1, 'Hacer la presentación', 'ALTA', 120, 'EN_PROGRESO', true) [42102-199]
+2023-12-19 21:23:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "TAREA" ya existe
+Table "TAREA" already exists; SQL statement:
+CREATE TABLE tarea ( id INT PRIMARY KEY, descripcion VARCHAR(255), prioridad VARCHAR(50), duracion INT, estado VARCHAR(50), presencial BOOLEAN ) [42101-199]
